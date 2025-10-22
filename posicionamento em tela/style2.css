@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+}
+p{
+    height: 100px;
+    text-align: center;
+    width: 25%;
+}
+.box1{
+    background-color: blue;
+    margin-right: auto;
+
+}
+.box2{
+    background-color: red;
+    margin: auto;
+
+}
+.box3{
+    background-color: green;
+    margin-left: auto;
+}
+.pai{
+    display: flex;
+
+}

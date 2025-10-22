@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mesclagem de colunas colspan</h1>
+    <table border="1" style="width: 50%;">
+        <thead>
+            <tr>
+                <!-- lembrando que o número do atributo do colspan é a quantidade de tabelas mescladas -->
+                <th colspan="3">titulo mesclado</th>
+            </tr>
+            <tr>
+                <th>Linha 1 Coluna 1 </th>
+                <th>Linha 1 Coluna 2 </th>
+                <th>Linha 1 Coluna 3 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>linha 2 coluna 1</td>
+                <td>linha 2 coluna 2</td>
+                <td>linha 2 coluna 3</td>
+            </tr>
+            <tr>
+                <td>linha 3 coluna 1</td>
+                <td>linha 3 coluna 2</td>
+                <td>linha 3 coluna 3</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Mesclagem de linhas rowspan</h1>
+    <table border="1" style="width: 50%;">
+        <thead>
+            <tr>
+                <!-- lembrando que o número do atributo do colspan é a quantidade de tabelas mescladas -->
+                <th colspan="3">titulo mesclado</th>
+            </tr>
+            <tr>
+                <th>Linha 1 Coluna 1 </th>
+                <th>Linha 1 Coluna 2 </th>
+                <th>Linha 1 Coluna 3 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">linha 2 e 3 coluna 1</td>
+                <td>linha 2 coluna 2</td>
+                <td>linha 2 coluna 3</td>
+            </tr>
+            <tr>
+                
+                <td>linha 3 coluna 2</td>
+                <td>linha 3 coluna 3</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>

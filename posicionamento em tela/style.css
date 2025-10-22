@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+}
+p{
+    height: 100px;
+    text-align: center;
+    width: 33.333%;
+}
+.box1{
+    background-color: blue;
+
+}
+.box2{
+    background-color: red;
+    margin: 0 auto;
+}
+.box3{
+    background-color: green;
+    margin-left: auto;
+
+
+}

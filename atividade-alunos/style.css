@@ -1,0 +1,54 @@
+/* Variáveis globais */
+:root {
+    --cor-principal: rgb(4, 99, 67);
+    --largura-max: 800px;
+    --fonte-principal: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Combinando body com descendente */
+body > main {
+    max-width: var(--largura-max);
+    margin: 30px auto;
+    padding: 0 20px;
+    font-family: var(--fonte-principal);
+}
+
+/* Header combinado */
+header.topo {
+    max-width: var(--largura-max);
+    margin: 30px auto;
+    padding: 0 20px;
+    text-align: center;
+    font-family: var(--fonte-principal);
+}
+
+/* Navegação com combinação */
+nav.navegacao img {
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Figcaption com combinação */
+figure .descricao {
+    font-size: smaller;
+}
+
+/* Legenda apenas dentro da descrição */
+.descricao .legenda {
+    color: gray;
+}
+
+/* Links dentro do main */
+main a {
+    color: var(--cor-principal);
+    text-decoration: none;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+main figure img{
+    max-width: 80%;
+}
