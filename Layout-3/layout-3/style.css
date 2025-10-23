@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +5,8 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Cabeçalho */
 header {
-    background-color: blue;
+    background-color: #0000FF;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -28,48 +26,66 @@ nav a {
     font-size: 16px;
 }
 
-/* Layout principal */
 main {
     display: flex;
-    justify-content: space-between;
     padding: 40px;
+    flex-wrap: wrap;
+    margin: auto;
+    /* border: 2px solid red; */
 }
 
-/* Seção do vídeo */
-.video-section {
+.video {
+    margin-left: 9%;
     flex: 3;
-    margin-right: 30px;
+    
 }
 
-.video-placeholder {
+.box-video {
     background-color: #c4c4c4;
-    width: 100%;
-    height: 350px;
-    border-radius: 4px;
+    width: 685px;
+    height: 324px;
+    /* border: 2px solid red; */
 }
 
-.video-section p {
+.video p {
     margin-top: 10px;
     color: #333;
+    /* border: 2px solid red; */
 }
 
-/* Barra lateral */
 .recomendados {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-left: 5%;
+  
+    /* border: 2px solid red; */
 }
 
-.recomendado .thumb {
+.recomendado .box {
     background-color: #c4c4c4;
-    width: 100%;
-    height: 120px;
-    border-radius: 4px;
+    width: 215px;
+    height: 142px;
+    /* border: 2px solid red; */
 }
 
 .recomendado p {
     margin-top: 5px;
     font-size: 14px;
     color: #333;
+    /* border: 2px solid red; */
+}
+
+.botao :hover {
+    text-decoration: none;
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover{
+    text-decoration: none;
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+
 }

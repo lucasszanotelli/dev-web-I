@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.topo, .end{
+    display: flex;
+    height: 40vh;
+    width: 100wh;
+
+}
+
+.azul{
+    background-color: darkblue;
+    height: 100%;
+    width: 50%;
+}
+.vermelho{
+    background-color: rgb(212, 11, 54);
+    height: 100%;
+    width: 50%;
+}
+.branco{
+    background-color: white;
+    height: 100%;
+    width: 15%;
+
+}
+.meio{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    height:20vh;
+}

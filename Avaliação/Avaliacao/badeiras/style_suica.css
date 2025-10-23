@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: red;
+    height: 100vh;
+    width: 100wh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    height: 55%;
+    width: 30%;
+    background-color: aliceblue;
+}
+.linha1, .linha2, .linha3{
+    height: 33.34%;  
+    display: flex;
+}
+.q1, .q2, .q3{
+    height: 100%;
+    width: 33.34%;
+}
+.q1, .q3{
+    background-color: red;
+
+}
+
