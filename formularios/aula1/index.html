@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind + DaisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" type="text/css" />
+
+    <title>Formulário 1</title>
+</head>
+
+<body class="p-10 bg-base-200">
+
+    <form id="formulario" method="post" class="max-w-3xl mx-auto space-y-8">
+
+        <h1 class="text-3xl font-bold text-center mb-6">Elementos Básicos</h1>
+
+        <!-- Input Text -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Input Text</h2>
+
+            <label for="NomeCompleto" class="label-text">Nome Completo</label>
+            <input type="text" id="NomeCompleto" name="NomeCompleto" maxlength="10"
+                placeholder="Nome completo" autocomplete="off" class="input input-bordered w-full">
+
+            <div class="flex gap-3 mt-3">
+                <input type="button" class="btn btn-primary" value="Boas Vindas" onclick="boasVindas1()">
+                <input type="button" class="btn btn-error" value="Não Clique" onclick="boasVindas()">
+                <button type="button" class="btn btn-accent" onclick="sorteDoDia()">Sorte do dia</button>
+            </div>
+        </div>
+
+        <!-- Color -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Input Color</h2>
+
+            <label for="corFundo" class="label-text">Cor de Fundo</label>
+            <div class="flex items-center gap-3">
+                <input type="color" id="corFundo" name="corFundo" onchange="mudaCorFundo(this.value)"
+                    class="input input-bordered w-24 h-12 p-1">
+                <span id="corFundoTexto" class="font-mono">#000000</span>
+            </div>
+        </div>
+
+        <!-- Input File -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Input File</h2>
+
+            <label for="foto" class="label-text">Foto</label>
+            <input type="file" id="foto" name="foto" accept="image/*" class="file-input file-input-bordered w-full">
+        </div>
+
+        <!-- Drag and Drop -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Input File com Drag and Drop</h2>
+
+            <div id="uploadArea"
+                class="border-2 border-dashed border-primary p-6 rounded-xl text-center cursor-pointer hover:bg-primary/10 transition">
+                <h3 class="text-lg font-semibold">Arraste e solte o arquivo aqui</h3>
+                <p class="text-sm opacity-75">ou clique para selecionar</p>
+                <input type="file" id="fileInput" hidden>
+            </div>
+
+            <div id="fileInfo" class="mt-2 text-primary"></div>
+        </div>
+
+        <!-- Password -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Input Password</h2>
+
+            <label class="label-text">Senha</label>
+            <div class="flex gap-3">
+                <input type="password" id="senha" class="input input-bordered w-full" placeholder="Senha">
+                <input type="button" id="verSenha" value="Mostrar" onclick="mostrarSenha(this)"
+                    class="btn btn-secondary">
+            </div>
+        </div>
+
+        <!-- Radio -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Input Radio</h2>
+
+            <label class="label-text mb-1">Você é maior de 18 anos?</label>
+
+            <div class="flex items-center gap-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="deMaior" value="sim" class="radio radio-primary"> Sim
+                </label>
+
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="radio" name="deMaior" value="nao" class="radio radio-primary"> Não
+                </label>
+            </div>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Input CheckBox</h2>
+
+            <label class="label-text">Quais frutas você gosta?</label>
+
+            <div class="flex gap-6">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="frutas" value="maca" class="checkbox checkbox-primary"> Maçã
+                </label>
+
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="frutas" value="banana" class="checkbox checkbox-primary"> Banana
+                </label>
+
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" name="frutas" value="laranja" class="checkbox checkbox-primary"> Laranja
+                </label>
+            </div>
+        </div>
+
+        <!-- Range -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Input Range</h2>
+
+            <label class="label-text">Idade</label>
+            <input type="range" id="idade" min="0" max="100" value="25" step="0.5"
+                oninput="atualizaValor(this.value)" class="range range-primary">
+            <span id="valorIdade" class="font-semibold">25</span>
+        </div>
+
+        <!-- Select -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Select</h2>
+
+            <label class="label-text">Estado de nascimento</label>
+            <select id="estado" class="select select-bordered w-full">
+                <option disabled selected>Selecione um estado</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="SP">São Paulo</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="BA">Bahia</option>
+            </select>
+        </div>
+
+        <!-- Textarea -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">TextArea</h2>
+
+            <textarea id="textearea" rows="5" maxlength="100" oninput="tamanho(this.value.length)"
+                class="textarea textarea-bordered w-full"></textarea>
+            <span id="valorMutavel">0</span>/100
+        </div>
+
+        <!-- Rich Text -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Rich Text</h2>
+
+            <div class="flex gap-2 mb-3">
+                <button type="button" class="btn btn-sm" onclick="document.execCommand('bold')"><b>B</b></button>
+                <button type="button" class="btn btn-sm" onclick="document.execCommand('italic')"><i>I</i></button>
+                <button type="button" class="btn btn-sm" onclick="document.execCommand('underline')"><u>U</u></button>
+                <button type="button" class="btn btn-sm" onclick="document.execCommand('insertUnorderedList')">
+                    • Lista
+                </button>
+            </div>
+
+            <div class="border rounded-lg p-3 min-h-[120px] bg-base-100" contenteditable="true"></div>
+        </div>
+
+        <!-- Datas -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Tipos de input data</h2>
+
+            <label class="label-text">Data de Nascimento</label>
+            <input type="date" class="input input-bordered w-full">
+
+            <label class="label-text">Datetime-local</label>
+            <input type="datetime-local" class="input input-bordered w-full">
+
+            <label class="label-text">Month</label>
+            <input type="month" class="input input-bordered w-full">
+
+            <label class="label-text">Week</label>
+            <input type="week" class="input input-bordered w-full">
+        </div>
+
+        <!-- Outros inputs -->
+        <div class="card bg-base-100 shadow-lg p-6 space-y-3">
+            <h2 class="text-xl font-semibold">Outros inputs</h2>
+
+            <label class="label-text">Email</label>
+            <input type="email" class="input input-bordered w-full">
+
+            <label class="label-text">Number</label>
+            <input type="number" class="input input-bordered w-full">
+
+            <label class="label-text">Search</label>
+            <input type="search" class="input input-bordered w-full">
+
+            <label class="label-text">Telefone</label>
+            <input type="tel" placeholder="(99) 99999-9999" maxlength="15"
+                class="input input-bordered w-full">
+
+            <label class="label-text">URL</label>
+            <input type="url" class="input input-bordered w-full">
+        </div>
+
+    </form>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
