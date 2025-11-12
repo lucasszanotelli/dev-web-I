@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html lang="pt-br" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+
+    <!-- Tailwind + DaisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="bg-base-200 min-h-screen flex justify-center items-start p-8">
+
+    <div class="card w-full max-w-4xl shadow-2xl bg-base-100 p-6">
+        <h1 class="text-3xl font-bold text-center text-primary mb-6">Agenda de Contatos</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div>
+                <label class="label"><span class="label-text">Nome</span></label>
+                <input type="text" id="nome" class="input input-bordered w-full" placeholder="Digite o nome" required>
+            </div>
+
+            <div>
+                <label class="label"><span class="label-text">Telefone</span></label>
+                <input type="tel" id="telefone" class="input input-bordered w-full" placeholder="(00) 00000-0000" maxlength="15" required>
+            </div>
+
+            <div>
+                <label class="label"><span class="label-text">E-mail</span></label>
+                <input type="email" id="email" class="input input-bordered w-full" placeholder="email@exemplo.com" required>
+            </div>
+
+            <div class="flex items-end">
+                <button id="btnInserir" class="btn btn-primary w-full" onclick="inserir()">Inserir</button>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="table table-zebra w-full" id="tabelaContatos">
+                <thead>
+                    <tr class="text-primary text-center">
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <!-- Resultados aparecem aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+     <!-- Biblioteca das mascaras -->
+    <script src="https://unpkg.com/imask"></script>
+</body>
+
+</html>
