@@ -67,6 +67,13 @@ function adicionarEventosLinha(linha) {
             input.className = "input input-bordered input-xs w-full";
             colunas[i].textContent = "";
             colunas[i].appendChild(input);
+
+            if (i==1){
+                IMask(input,[
+                    { mask: "(00) 0000-0000" },
+                    { mask: "(00) 00000-0000" }
+                ])
+            }
         }
 
         btnEditar.classList.add("hidden");
@@ -99,17 +106,21 @@ function adicionarEventosLinha(linha) {
             return;
         }
 
+        var confirmacao = confirm("Deseja realmente salvar?")
+        if(!confirmacao)return;
+
         linha.cells[0].textContent = nome;
         linha.cells[1].textContent = telefone;
         linha.cells[2].textContent = email;
-
+        
         btnSalvar.classList.add("hidden");
         btnEditar.classList.remove("hidden");
         btnExcluir.classList.remove("hidden");
     });
 
     btnExcluir.addEventListener("click", () => {
-        linha.remove();
+        var confirmacao = confirm("Deseja excluir?");
+        if(confirmacao)linha.remove();
     });
 }
 
