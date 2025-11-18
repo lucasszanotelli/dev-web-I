@@ -19,6 +19,11 @@ function inserir() {
         telefone.focus();
         return;
     }
+    if(!validarNome(nome)){
+        alert("Por favor, insira um nome válido!")
+        nome.focus();
+        return;
+    }
 
 
     var newline = tabela.insertRow();
@@ -31,6 +36,7 @@ function inserir() {
         <button class="btn btn-xs btn-warning btn-editar" onclick="editar()">📝 Editar</button>
         <button class="btn btn-xs btn-error btn-excluir" onclick="excluir()">🗑️ Excluir</button>
         <button class="btn btn-xs btn-success btn-salvar hidden onclick="salvar()">💾 Salvar</button>
+        <button class="btn btn-xs btn-warning btn-cancelar hidden onclick="cancelar()">❌ Cancelar</button>
       </td>
     `
     document.getElementById("nome").value = "";
@@ -52,13 +58,26 @@ function validarTel(tel) {
     return true
 }
 
+function validarNome(nome){
+    if(nome.length < 4){
+        return false;
+    }
+    return true;
+}
+
 function adicionarEventosLinha(linha) {
     const btnEditar = linha.querySelector(".btn-editar");
     const btnExcluir = linha.querySelector(".btn-excluir");
     const btnSalvar = linha.querySelector(".btn-salvar");
+    const btnCancelar = linha.querySelector(".btn-cancelar");
 
     btnEditar.addEventListener("click", () => {
         const colunas = linha.querySelectorAll("td");
+
+        // Salva valores originais (importante!)
+        linha.dataset.originalNome = colunas[0].textContent;
+        linha.dataset.originalTel = colunas[1].textContent;
+        linha.dataset.originalEmail = colunas[2].textContent;
 
         for (let i = 0; i < 3; i++) {
             const input = document.createElement("input");
@@ -68,17 +87,18 @@ function adicionarEventosLinha(linha) {
             colunas[i].textContent = "";
             colunas[i].appendChild(input);
 
-            if (i==1){
-                IMask(input,[
+            if (i == 1) {
+                IMask(input, [
                     { mask: "(00) 0000-0000" },
                     { mask: "(00) 00000-0000" }
-                ])
+                ]);
             }
         }
 
         btnEditar.classList.add("hidden");
         btnExcluir.classList.add("hidden");
         btnSalvar.classList.remove("hidden");
+        btnCancelar.classList.remove("hidden");
     });
 
     btnSalvar.addEventListener("click", () => {
@@ -91,13 +111,13 @@ function adicionarEventosLinha(linha) {
 
         if (!nome || !telefone || !email) {
             alert("Preencha todos os campos!!!");
-            return; 
+            return;
         }
 
         if (!validarEmail(email)) {
             alert("Por favor, insira um e-mail válido!");
             inputs[2].focus();
-            return; 
+            return;
         }
 
         if (!validarTel(telefone)) {
@@ -106,23 +126,39 @@ function adicionarEventosLinha(linha) {
             return;
         }
 
-        var confirmacao = confirm("Deseja realmente salvar?")
-        if(!confirmacao)return;
+        var confirmacao = confirm("Deseja realmente salvar?");
+        if (!confirmacao) return;
 
         linha.cells[0].textContent = nome;
         linha.cells[1].textContent = telefone;
         linha.cells[2].textContent = email;
-        
+
         btnSalvar.classList.add("hidden");
+        btnCancelar.classList.add("hidden");
         btnEditar.classList.remove("hidden");
         btnExcluir.classList.remove("hidden");
     });
 
     btnExcluir.addEventListener("click", () => {
         var confirmacao = confirm("Deseja excluir?");
-        if(confirmacao)linha.remove();
+        if (confirmacao) linha.remove();
+    });
+
+    btnCancelar.addEventListener("click", () => {
+        const colunas = linha.querySelectorAll("td");
+
+        linha.cells[0].textContent = linha.dataset.originalNome;
+        linha.cells[1].textContent = linha.dataset.originalTel;
+        linha.cells[2].textContent = linha.dataset.originalEmail;
+
+        btnSalvar.classList.add("hidden");
+        btnCancelar.classList.add("hidden");
+
+        btnEditar.classList.remove("hidden");
+        btnExcluir.classList.remove("hidden");
     });
 }
+
 
 
 document.addEventListener("DOMContentLoaded", () => {

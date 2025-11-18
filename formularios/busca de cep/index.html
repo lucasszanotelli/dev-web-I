@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="cupcake">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet" type="text/css" />
+    <title>Busca de cep</title>
+</head>
+<body class="bg-base-200 min-h-screen flex justify-center items-start p-10">
+
+    <form class="card w-full max-w-3xl shadow-xl bg-base-100 p-8 space-y-6 " >
+        <div class="max-w-3xl max-h-screen rounded-box bg-primary text-center flex items-center justify-center h-20">
+            <h1 class="text-3xl font-bold text-primary-content">
+            Busca de CEP
+            </h1>
+        </div>
+        
+
+        <!-- CEP -->
+        <div class="form-control">
+            <label class="label" for="cep">
+                <span class="label-text font-semibold">CEP</span>
+            </label>
+            <input type="text" id="cep" name="cep" placeholder="00000-000" class="input input-bordered w-full" maxlength="8" onblur="buscarCEP(this.value)">
+        </div>
+
+        <!-- Rua -->
+        <div class="form-control">
+            <label class="label" for="rua">
+                <span class="label-text font-semibold">Rua</span>
+            </label>
+            <input type="text" id="rua" name="rua" placeholder="Nome da rua"
+                   class="input input-bordered w-full" />
+        </div>
+
+        <!-- Número e Complemento -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="form-control">
+                <label class="label" for="numero">
+                    <span class="label-text font-semibold">Número</span>
+                </label>
+                <input type="number" id="numero" name="numero" placeholder="Ex: 123"
+                       class="input input-bordered w-full" />
+            </div>
+
+            <div class="form-control">
+                <label class="label" for="complemento">
+                    <span class="label-text font-semibold">Complemento</span>
+                </label>
+                <input type="text" id="complemento" name="complemento" placeholder="Apto, bloco..."
+                       class="input input-bordered w-full" />
+            </div>
+
+        </div>
+
+        <!-- Bairro -->
+        <div class="form-control">
+            <label class="label" for="bairro">
+                <span class="label-text font-semibold">Bairro</span>
+            </label>
+            <input type="text" id="bairro" placeholder="Digite o bairro"
+                   class="input input-bordered w-full" />
+        </div>
+
+        <!-- Cidade -->
+        <div class="form-control">
+            <label class="label" for="cidade">
+                <span class="label-text font-semibold">Cidade</span>
+            </label>
+            <input type="text" id="cidade" placeholder="Digite a cidade"
+                   class="input input-bordered w-full" />
+        </div>
+
+        <!-- Estado -->
+        <div class="form-control">
+            <label class="label" for="estado">
+                <span class="label-text font-semibold">Estado</span>
+            </label>
+
+            <select id="estado" name="estado" class="select select-bordered w-full">
+                <option value="">Selecione um estado</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+            </select>
+        </div>
+
+    </form>
+
+</body>
+
+
+    <script src="script.js"></script>
+    
+    
+</body>
+</html>
