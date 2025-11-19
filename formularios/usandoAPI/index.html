@@ -1,47 +1,81 @@
-<form action="">
-    <div>
-        <label for="cripto">Criptomoeda: </label>
-        <input type="text" id="cripto" placeholder="Ex: bitcoin">
-    </div>
-    <div>
-        <input type="button" id="btnPesquisar" value="Pesquisar">
-    </div>
-</form>
+<!-- 
+ Descrição:
+ O código pede um input de criptomoedas e para evitar erros, transformei em um select das cripto mais conhecidas.
+ Ao clicar em ver cotação, ele faz uma vusca na API da Coin Gecko utilizando, na url, o nome da cripto 
+ e o valor que ela vai retornar (neste caso, estou usando BRL - real brasileiro e UDS - dolar) e mostra 
+ na div cotacao.
+ Para incrementar mais, adicionei também um input number que pede o valor que você investiria na cripto 
+ selevionada. Assim, o sistema calcula quanto daquela moeda seria possível comprar com o dinheiro investido.
+ Em seguida, também é mostrado na div resultado.
+O interessante é que os botões funcionam independentes entre si entretanto dependentes do select das criptos
 
-<!-- resultados -->
-<span id="resultado"></span>
+Para estilização, estou usando DaisyUI, uma "framework" para uma estilização mais simples e rápida. A escolhi
+para ter afinidade com a estilização e por já estar usandp em outro projeto.
+ 
+-->
 
-<script>
-    document.getElementById("btnPesquisar").addEventListener("click", () => {
-        const nome = document.getElementById("cripto").value.trim().toLowerCase();
-        const span = document.getElementById("resultado");
 
-        if (nome === "") {
-            span.innerText = "Digite o nome de uma criptomoeda.";
-            return;
-        }
 
-        const url = `https://api.coingecko.com/api/v3/simple/price?ids=${nome}&vs_currencies=usd,brl`;
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criptomoedas</title>
 
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                if (!data[nome]) {
-                    span.innerText = "Criptomoeda não encontrada!";
-                    return;
-                }
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-200 p-8">
 
-                const usd = data[nome].usd;
-                const brl = data[nome].brl;
+<div class="max-w-3xl mx-auto bg-base-100 shadow-lg p-6 rounded-xl">
 
-                span.innerHTML = `
-                    Cotação atual de <strong>${nome}</strong>:<br>
-                    💵 USD: $${usd}<br>
-                    🇧🇷 BRL: R$${brl}
-                `;
-            })
-            .catch(() => {
-                span.innerText = "Erro ao consultar a API.";
-            });
-    });
-</script>
+    <h1 class="text-2xl font-bold mb-6 text-center">Conversor de Criptomoedas</h1>
+
+    <table class="table w-full">
+        <tbody>
+
+            <tr>
+                <td colspan="2" class="pb-6">
+                    <label class="font-semibold">Selecione a Criptomoeda:</label>
+                    <select id="cripto" class="select select-bordered w-full mt-2">
+                        <option value="">-- selecione --</option>
+                        <option value="bitcoin">Bitcoin (BTC)</option>
+                        <option value="ethereum">Ethereum (ETH)</option>
+                        <option value="dogecoin">Dogecoin (DOGE)</option>
+                        <option value="solana">Solana (SOL)</option>
+                        <option value="cardano">Cardano (ADA)</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="align-top p-4 border-r">
+                    <button onclick="verCotacao()" class="btn btn-info w-full mb-3">
+                        Ver Cotação
+                    </button>
+
+                    <div id="cotacao" class="p-3 min-h-12 bg-base-200 rounded-lg text-center"></div>
+                </td>
+
+
+                <td class="align-top p-4">
+                    <label class="font-semibold" for="valor">Valor para comprar</label>
+                    <input id="valor" type="number" placeholder="Valor em R$" class="input input-bordered w-full mb-3" />
+
+                    <button onclick="converter()" class="btn btn-success w-full mb-3">
+                        Converter
+                    </button>
+
+                    <div id="resultado" class="p-3 min-h-12 bg-base-200 rounded-lg text-center"></div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
