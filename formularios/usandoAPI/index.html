@@ -1,0 +1,47 @@
+<form action="">
+    <div>
+        <label for="cripto">Criptomoeda: </label>
+        <input type="text" id="cripto" placeholder="Ex: bitcoin">
+    </div>
+    <div>
+        <input type="button" id="btnPesquisar" value="Pesquisar">
+    </div>
+</form>
+
+<!-- resultados -->
+<span id="resultado"></span>
+
+<script>
+    document.getElementById("btnPesquisar").addEventListener("click", () => {
+        const nome = document.getElementById("cripto").value.trim().toLowerCase();
+        const span = document.getElementById("resultado");
+
+        if (nome === "") {
+            span.innerText = "Digite o nome de uma criptomoeda.";
+            return;
+        }
+
+        const url = `https://api.coingecko.com/api/v3/simple/price?ids=${nome}&vs_currencies=usd,brl`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (!data[nome]) {
+                    span.innerText = "Criptomoeda não encontrada!";
+                    return;
+                }
+
+                const usd = data[nome].usd;
+                const brl = data[nome].brl;
+
+                span.innerHTML = `
+                    Cotação atual de <strong>${nome}</strong>:<br>
+                    💵 USD: $${usd}<br>
+                    🇧🇷 BRL: R$${brl}
+                `;
+            })
+            .catch(() => {
+                span.innerText = "Erro ao consultar a API.";
+            });
+    });
+</script>

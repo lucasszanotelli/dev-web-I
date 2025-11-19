@@ -25,7 +25,6 @@ function inserir() {
         return;
     }
 
-
     var newline = tabela.insertRow();
 
     newline.innerHTML = `
@@ -158,8 +157,6 @@ function adicionarEventosLinha(linha) {
         btnExcluir.classList.remove("hidden");
     });
 }
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
     var telefoneInput = document.getElementById("telefone");
