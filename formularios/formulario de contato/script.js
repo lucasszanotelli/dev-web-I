@@ -1,5 +1,5 @@
 async function buscarCEP(cep){
-    if (cep.length !== 8) {
+    if (cep.length !== 9) {
         alert("CEP inválido! Digite um CEP com 8 números.");
         return;
     }
@@ -23,6 +23,15 @@ async function buscarCEP(cep){
         });
 }
 
+document.addEventListener("DOMContentLoaded", ()=>{
+
+    if(cep){
+        IMask(cep,[
+            { mask: "00000-000" }
+        ])
+    }
+})
+
 document.addEventListener("DOMContentLoaded", () => {
     var telefoneInput = document.getElementById("telefone");
     if (telefoneInput) {
@@ -31,7 +40,5 @@ document.addEventListener("DOMContentLoaded", () => {
             { mask: "(00) 0 0000-0000" }
         ]);
     }
-    validarTel(telefoneInput);
 });
-
 
